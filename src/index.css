@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-size: 15px;
+    line-height: 1.6;
+    background-color: #f8fafc;
+    @apply text-slate-900 font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white transition-colors duration-300;
+  }
+}
+
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Base Layout & Section Classes */
+.app-container {
+  background-color: #f8fafc;
+  @apply min-h-screen flex flex-col text-slate-900;
+}
+
+.main-content {
+  @apply flex-1;
+}
+
+.section-container {
+  @apply w-full px-6 lg:px-12 xl:px-16 space-y-8;
+}
+
+.section-title {
+  @apply text-3xl font-extrabold text-slate-900;
+}
+
+.section-subtitle {
+  @apply text-xs font-bold text-indigo-600 uppercase tracking-widest;
+}
+
+.section-desc {
+  @apply text-base text-slate-700 leading-relaxed font-medium;
+}
+
+/* Buttons & Interactive Controls */
+.btn-primary {
+  @apply px-6 py-3 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer disabled:opacity-50;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 text-xs font-bold text-indigo-600 bg-indigo-50 rounded-xl hover:bg-indigo-100 transition-colors inline-flex items-center gap-2 cursor-pointer;
+}
+
+.btn-accent {
+  @apply hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl shadow-md shadow-indigo-500/20 active:scale-95 transition-all cursor-pointer;
+}
+
+.btn-outline {
+  @apply px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 flex items-center gap-1.5 cursor-pointer;
+}
+
+/* Badges & Tags */
+.badge-tag {
+  @apply px-3 py-1 text-[11px] font-bold text-white bg-slate-900/80 backdrop-blur-md rounded-full border border-white/20;
+}
+
+.badge-highlight {
+  @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold text-indigo-600 bg-indigo-100/80 border border-indigo-200;
+}
+
+.badge-subtle {
+  @apply px-2 py-0.5 rounded bg-indigo-50 text-indigo-600 text-xs font-semibold;
+}
+
+/* Header & Navbar - Light Blue Background & Full Width */
+.navbar {
+  @apply sticky top-0 z-40 w-full bg-blue-50/95 backdrop-blur-md border-b border-blue-200/80 transition-colors shadow-sm;
+}
+
+.navbar-container {
+  @apply w-full px-6 sm:px-10 lg:px-16;
+}
+
+.navbar-brand {
+  @apply flex items-center gap-3 cursor-pointer;
+}
+
+.navbar-brand-logo {
+  @apply w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25 transition-transform;
+}
+.navbar-brand:hover .navbar-brand-logo {
+  @apply scale-105;
+}
+
+.navbar-brand-text {
+  @apply text-xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent tracking-tight;
+}
+
+.navbar-link {
+  @apply px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-700 hover:text-indigo-600 hover:bg-white/80 cursor-pointer;
+}
+
+.navbar-link-active {
+  @apply px-4 py-2 rounded-xl text-sm font-extrabold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/30 ring-2 ring-indigo-400/40 cursor-pointer flex items-center gap-1.5;
+}
+
+.navbar-dropdown {
+  @apply absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-slate-200 py-2 z-50;
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+.navbar-dropdown-item {
+  @apply w-full text-left px-4 py-2.5 text-xs font-bold transition-all flex items-center justify-between text-slate-700 hover:bg-slate-100 cursor-pointer;
+}
+
+.navbar-dropdown-item-active {
+  @apply w-full text-left px-4 py-2.5 text-xs font-extrabold transition-all flex items-center justify-between bg-indigo-600 text-white border-l-4 border-amber-400 cursor-pointer;
+}
+
+.navbar-icon-btn {
+  @apply relative p-2 rounded-lg text-slate-700 hover:bg-white/80 transition-colors cursor-pointer;
+}
+
+.navbar-counter-badge {
+  @apply absolute -top-1 -right-1 w-5 h-5 rounded-full text-white text-[10px] font-bold flex items-center justify-center shadow-sm;
+}
+
+/* Footer */
+.footer {
+  @apply bg-slate-900 text-slate-300 border-t border-slate-800;
+}
+
+.footer-banner {
+  @apply border-b border-slate-800 bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 py-12 px-6 lg:px-12 xl:px-16;
+}
+
+.footer-grid {
+  @apply w-full px-6 lg:px-12 xl:px-16 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10;
+}
+
+.footer-title {
+  @apply text-base font-extrabold text-white uppercase tracking-wider relative inline-block pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-1/2 after:h-[2.5px] after:bg-gradient-to-r after:from-amber-400 after:via-yellow-400 after:to-amber-500 after:shadow-[0_0_10px_#fbbf24] after:rounded-full;
+}
+
+.footer-link {
+  @apply text-sm sm:text-[15px] font-medium text-slate-300 hover:text-amber-300 flex items-center gap-2.5 transition-all cursor-pointer;
+}
+
+.footer-bottom {
+  @apply border-t border-slate-800/80 py-6 px-6 lg:px-12 xl:px-16;
+}
+
+/* Cards */
+.course-card {
+  @apply bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden;
+}
+
+.course-card-thumbnail {
+  @apply relative aspect-video w-full overflow-hidden bg-slate-100;
+}
+
+.course-card-img {
+  @apply w-full h-full object-cover transition-transform duration-500;
+}
+.course-card:hover .course-card-img {
+  @apply scale-105;
+}
+
+.course-card-body {
+  @apply p-5 flex-1 flex flex-col justify-between space-y-4 bg-white text-slate-900;
+}
+
+.course-card-title {
+  @apply text-lg font-extrabold text-slate-900 line-clamp-2 hover:text-indigo-600 cursor-pointer transition-colors;
+}
+
+.course-card-desc {
+  @apply text-sm text-slate-700 font-medium leading-relaxed line-clamp-2;
+}
+
+.feature-card {
+  @apply p-6 bg-white rounded-2xl border border-slate-200/90 shadow-sm space-y-4 hover:border-indigo-500 transition-all text-slate-900;
+}
+
+.dark-card {
+  @apply p-6 bg-gradient-to-br from-indigo-900 to-slate-900 text-white border border-indigo-800 rounded-2xl space-y-3 shadow-md;
+}
+
+/* Modals */
+.modal-backdrop {
+  @apply fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.modal-card {
+  @apply relative w-full bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-2xl;
+  animation: slideUp 0.25s ease-out forwards;
+}
+
+.modal-header {
+  @apply flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50;
+}
+
+.modal-body {
+  @apply p-6 space-y-6;
+}
+
+.modal-footer {
+  @apply p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between;
+}
+
+/* Form Controls */
+.input-field {
+  @apply w-full pl-9 pr-3 py-2 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:border-indigo-500 font-medium;
+}
+
+.select-field {
+  @apply w-full pl-9 pr-3 py-2 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:border-indigo-500 font-medium;
+}
+
+.textarea-field {
+  @apply w-full p-3 text-sm bg-white border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:border-indigo-500 font-medium;
+}
+
+.field-label {
+  @apply text-sm font-extrabold text-slate-950;
+}
+
+/* Hero Section */
+.hero-section {
+  @apply relative py-10 overflow-hidden bg-gradient-to-b from-indigo-50/70 via-slate-50 to-white rounded-3xl border border-slate-200/60;
+}
+
+.hero-title {
+  @apply text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight;
+}
+
+.hero-desc {
+  @apply text-base text-slate-700 max-w-2xl leading-relaxed mx-auto lg:mx-0 font-medium;
+}
+
+/* Accordion */
+.accordion-card {
+  @apply bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all shadow-sm;
+}
+
+.accordion-header {
+  @apply w-full px-6 py-4 flex items-center justify-between text-left hover:bg-slate-50 transition-colors cursor-pointer;
+}
+
+.accordion-body {
+  @apply px-6 pb-4 pt-2 border-t border-slate-100 space-y-2;
+}
+
+/* Toast */
+.toast-container {
+  @apply fixed bottom-6 right-6 z-50;
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+.toast-box {
+  @apply flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl border text-xs font-semibold backdrop-blur-md;
+}

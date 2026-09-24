@@ -6,7 +6,6 @@ import {
   Calendar, 
   Users, 
   UserPlus, 
-  Sparkles, 
   Activity, 
   BarChart3, 
   ChevronDown,

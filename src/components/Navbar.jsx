@@ -7,7 +7,6 @@ import {
   Menu, 
   X, 
   ChevronDown,
-  Sparkles,
   UserCheck,
   ShieldCheck,
   LayoutDashboard
@@ -49,6 +48,7 @@ export default function Navbar() {
     { id: 'faq', label: 'FAQ' },
     { id: 'contact', label: 'Contact Us' },
     { id: 'careers', label: 'Careers' },
+    { id: 'admin', label: 'Admin Portal' },
     { id: 'privacy', label: 'Privacy Policy' },
     { id: 'terms', label: 'Terms & Conditions' },
     { id: 'disclaimer', label: 'Disclaimer' },
@@ -75,19 +75,19 @@ export default function Navbar() {
   };
 
   return (
-    <header className="navbar bg-blue-50/95 border-b border-blue-200/80 sticky top-0 z-40 w-full shadow-sm">
-      <div className="w-full px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 w-full gap-4">
+    <header className="navbar bg-blue-50/95 border-b border-blue-200/80 sticky top-0 z-40 w-full shadow-sm max-w-full overflow-hidden">
+      <div className="w-full px-2.5 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20 w-full gap-2 sm:gap-4">
           
           {/* Logo - Kept at Left Margin */}
           <div 
             onClick={() => handleNavClick('home')} 
-            className="navbar-brand flex items-center gap-2.5 cursor-pointer shrink-0"
+            className="navbar-brand flex items-center gap-2 sm:gap-2.5 cursor-pointer shrink-0 min-w-0"
           >
-            <div className="navbar-brand-logo w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25">
-              <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />
+            <div className="navbar-brand-logo w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25 shrink-0">
+              <GraduationCap className="w-4.5 h-4.5 sm:w-6 sm:h-6" />
             </div>
-            <span className="navbar-brand-text text-lg sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent tracking-tight whitespace-nowrap">
+            <span className="navbar-brand-text text-base sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent tracking-tight whitespace-nowrap">
               NEXUS ACADEMY
             </span>
           </div>
@@ -191,29 +191,30 @@ export default function Navbar() {
             {/* Wishlist Icon */}
             <button
               onClick={openWishlist}
-              className="navbar-icon-btn relative p-2 rounded-lg text-slate-700 hover:bg-white/80 transition-colors cursor-pointer"
+              className="navbar-icon-btn relative p-1.5 sm:p-2 rounded-lg text-slate-700 hover:bg-white/80 transition-colors cursor-pointer shrink-0"
               title="View Wishlist"
+              aria-label="View Wishlist"
             >
-              <Heart className={`w-5 h-5 ${wishlist.length > 0 ? 'text-rose-500 fill-rose-500' : ''}`} />
+              <Heart className={`w-4.5 h-4.5 sm:w-5 sm:h-5 ${wishlist.length > 0 ? 'text-rose-500 fill-rose-500' : ''}`} />
               {wishlist.length > 0 && (
-                <span className="navbar-counter-badge absolute -top-1 -right-1 w-5 h-5 rounded-full text-white text-[10px] font-bold flex items-center justify-center bg-rose-500 shadow-sm">
+                <span className="navbar-counter-badge absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center bg-rose-500 shadow-sm">
                   {wishlist.length}
                 </span>
               )}
             </button>
 
             {/* Student Login & Account Action */}
-            <div className="relative">
+            <div className="relative shrink-0">
               {currentUser ? (
                 <div className="relative">
                   <button
                     onClick={() => { setPortalsDropdownOpen(!portalsDropdownOpen); setDropdownOpen(false); }}
-                    className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs xl:text-sm font-bold bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-md cursor-pointer whitespace-nowrap"
+                    className="flex items-center gap-1.5 px-2 py-1.5 sm:px-3 sm:py-2 rounded-xl text-xs xl:text-sm font-bold bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-md cursor-pointer whitespace-nowrap"
                   >
-                    <div className="w-5 h-5 rounded-md bg-emerald-500 text-white flex items-center justify-center font-bold text-[10px]">
+                    <div className="w-5 h-5 rounded-md bg-emerald-500 text-white flex items-center justify-center font-bold text-[10px] shrink-0">
                       {currentUser.name?.[0]?.toUpperCase() || 'S'}
                     </div>
-                    <span>{currentUser.name?.split(' ')[0] || 'Student'}</span>
+                    <span className="hidden sm:inline">{currentUser.name?.split(' ')[0] || 'Student'}</span>
                     <ChevronDown className={`w-3.5 h-3.5 transition-transform ${portalsDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
 
@@ -241,10 +242,11 @@ export default function Navbar() {
               ) : (
                 <button
                   onClick={() => { openModal('auth'); setPortalsDropdownOpen(false); }}
-                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-md shadow-indigo-600/25 cursor-pointer whitespace-nowrap"
+                  className="flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs xl:text-sm font-bold bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-md shadow-indigo-600/25 cursor-pointer whitespace-nowrap"
                 >
-                  <UserCheck className="w-4 h-4" />
-                  <span>Student Login</span>
+                  <UserCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                  <span className="hidden sm:inline">Student Login</span>
+                  <span className="sm:hidden">Login</span>
                 </button>
               )}
             </div>
@@ -252,9 +254,10 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-white/80"
+              className="lg:hidden p-1.5 sm:p-2 rounded-lg text-slate-700 hover:bg-white/80 shrink-0"
+              aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
@@ -262,7 +265,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-blue-50/95 border-b border-blue-200 px-6 pt-2 pb-6 space-y-4">
+        <div className="lg:hidden bg-blue-50/95 border-b border-blue-200 px-3 sm:px-6 pt-2 pb-6 space-y-4 max-w-full overflow-hidden">
           <form 
             onSubmit={(e) => {
               e.preventDefault();
@@ -330,13 +333,14 @@ export default function Navbar() {
               <button
                 key={page.id}
                 onClick={() => handleNavClick(page.id, page.isModal)}
-                className={`text-left px-3 py-2 rounded-lg text-xs font-semibold transition-colors ${
+                className={`text-left px-2.5 py-2 rounded-lg text-xs font-semibold transition-colors min-w-0 flex items-center justify-between gap-1 ${
                   currentPage === page.id
                     ? 'bg-indigo-600 text-white font-bold ring-2 ring-indigo-400'
                     : 'text-slate-700 hover:bg-white/80'
                 }`}
               >
-                {page.label} {currentPage === page.id ? '✓' : ''}
+                <span className="truncate">{page.label}</span>
+                {currentPage === page.id && <span className="shrink-0 text-emerald-300 font-bold">✓</span>}
               </button>
             ))}
           </div>

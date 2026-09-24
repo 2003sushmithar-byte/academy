@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   Search, 
-  Sparkles, 
   ArrowRight, 
   CheckCircle2, 
   Star, 
@@ -26,7 +25,7 @@ export function HeroSection() {
             
             {/* Pill Tag */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide">
-              <Sparkles className="w-3.5 h-3.5" />
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
               <span>Admissions Open for 2026 Cohorts</span>
             </div>
 

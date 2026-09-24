@@ -111,7 +111,7 @@ function FacultyDashboard({ faculty }) {
             { label: 'Courses', value: assignedCourses.length || 1, color: 'bg-white/20' },
             { label: 'Batches', value: assignedBatches.length || 2, color: 'bg-white/20' },
             { label: 'Students', value: 145, color: 'bg-white/20' },
-            { label: 'Rating', value: `⭐ ${faculty.rating}`, color: 'bg-amber-400/30' },
+            { label: 'Rating', value: `${faculty.rating} / 5.0`, color: 'bg-amber-400/30' },
           ].map(s => (
             <div key={s.label} className={`${s.color} rounded-xl px-4 py-2 text-center`}>
               <p className="text-xs text-indigo-100 font-semibold">{s.label}</p>

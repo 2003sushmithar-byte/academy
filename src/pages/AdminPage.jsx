@@ -33,7 +33,6 @@ import {
   Send,
   MessageSquare,
   ExternalLink,
-  Sparkles,
   CheckCheck,
   LogOut,
   Settings,

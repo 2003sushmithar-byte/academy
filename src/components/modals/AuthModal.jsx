@@ -13,7 +13,7 @@ import {
   CheckCircle2, 
   AlertCircle,
   MapPin,
-  Sparkles
+  UserPlus
 } from 'lucide-react';
 import TermsCheckbox from '../common/TermsCheckbox';
 
@@ -318,7 +318,7 @@ export default function AuthModal() {
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            <Sparkles className="w-4 h-4 text-amber-500" />
+            <UserPlus className="w-4 h-4 text-indigo-600" />
             <span>New Student Registration</span>
           </button>
         </div>

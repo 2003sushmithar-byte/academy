@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, CheckCircle2, PhoneCall } from 'lucide-react';
+import { ArrowRight, CheckCircle2, PhoneCall } from 'lucide-react';
 import { Button } from '../common/Button';
 
 export function CallToAction() {
@@ -14,7 +14,7 @@ export function CallToAction() {
           {/* Left Text */}
           <div className="space-y-4 text-center lg:text-left max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs font-semibold text-blue-100">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Early Enrollment Cohorts Open</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">

@@ -9,7 +9,7 @@ import {
   BookOpen, 
   Users, 
   Calendar, 
-  Sparkles 
+  BarChart2 
 } from 'lucide-react';
 import { Button } from './Button';
 
@@ -86,7 +86,7 @@ export function Navbar() {
                       </div>
                     </a>
                     <a href="#courses" className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors">
-                      <Sparkles className="w-5 h-5 text-blue-600 mt-0.5" />
+                      <BarChart2 className="w-5 h-5 text-blue-600 mt-0.5" />
                       <div>
                         <div className="text-sm font-semibold text-slate-900">Data Science & AI</div>
                         <div className="text-xs text-slate-500">Python, ML, Data Analytics</div>
